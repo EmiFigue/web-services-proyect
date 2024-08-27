@@ -7,10 +7,12 @@ const api = {
 };
 function App() {
   const [search, setSearch] = useState("");
+  const [weather, setWeather] = useState({});
   const searchPressed = () => {
     fetch(`${api.base}weather?q=${search}&units=metric&appid=${api.key}`)
     .then((result) => result.json())
-    .then((result) => {console.log(result);});
+    .then((result) => {console.log(result);})
+    .then ((result) => {setWeather(result);})
   };
   return (
     <div className="App">
@@ -19,7 +21,6 @@ function App() {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button onClick={searchPressed}>search</button>
-      <p> Mexico City</p>
       </header>
     </div>
   );
