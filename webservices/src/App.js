@@ -2,10 +2,6 @@ import './assets/App.css';
 import { useState } from "react";
 import { fetchWeather } from './components/getApi';
 
-const api = {
-  key:'39942a3074e7466c372775ab00ba986d',
-  base:'http://api.openweathermap.org/data/2.5/'
-};
 function App() {
   const [search, setSearch] = useState("");
   const [weather, setWeather] = useState({});
