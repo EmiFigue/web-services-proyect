@@ -9,10 +9,9 @@ function App() {
   const [search, setSearch] = useState("");
   const [weather, setWeather] = useState({});
   const searchPressed = () => {
-    fetch(`${api.base}weather?q=${search}&units=metric&appid=${api.key}`)
+    fetch(`${api.base}weather?q=${search}&units=metric&appid=${api.key}&lang=es`)
     .then((result) => result.json())
-    .then((result) => {console.log(result);})
-    .then ((result) => {setWeather(result);})
+    .then((res) => (setWeather(res)))
   };
   return (
     <div className="App">
@@ -21,7 +20,16 @@ function App() {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button onClick={searchPressed}>search</button>
-      </header>
+      {typeof weather.main == "undefined" ? 
+      ("") : 
+      (<div>
+        <p> Ciudad destino {weather.name} </p>
+        <p> {weather.weather[0].description} </p>
+        <p> Temperatura {weather.main.temp}°C </p>
+        <p> Sensacion termica {weather.main.feels_like}°C</p>
+      </div>)
+      }
+      </header>   
     </div>
   );
 }
