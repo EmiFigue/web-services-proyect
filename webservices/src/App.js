@@ -1,5 +1,6 @@
 import './assets/App.css';
 import { useState } from "react";
+import { fetchWeather } from './components/getApi';
 
 const api = {
   key:'39942a3074e7466c372775ab00ba986d',
@@ -9,11 +10,8 @@ function App() {
   const [search, setSearch] = useState("");
   const [weather, setWeather] = useState({});
   const searchPressed = () => {
-    fetch(`${api.base}weather?q=${search}&units=metric&appid=${api.key}&lang=es`)
-    .then((result) => result.json())
-    .then((res) => (setWeather(res)))
-    .catch((error) => console.error('Error al obtener los datos del clima:', error));
-    
+    fetchWeather(search)
+    .then ((res) => (setWeather(res)))
   };
   return (
     <div className="App">
