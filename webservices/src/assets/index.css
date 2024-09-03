@@ -1,10 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
+  font-style: normal;
+  position: relative;
+  overflow: hidden;
+}
+
+.circle-bg {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.8), rgba(33, 150, 243, 0));
+  filter: blur(100px);
+  z-index: -1; /* Para que se coloque detrás del contenido */
+}
+
+.circle-bg-orange {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 152, 0, 0.8), rgba(255, 152, 0, 0));
+  filter: blur(100px);
+  z-index: -1; /* Para que se coloque detrás del contenido */
+}
+
+p {
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.6;
+}
+
+button {
+  background-color: #61dafb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #21a1f1;
+}
+
+.weather-info {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.weather-info p {
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.weather-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  border-radius: 50%; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.weather-icon-container.day {
+  background: linear-gradient(180deg, #87CEEB, #F5D6BA); 
+}
+
+.weather-icon-container.night {
+  background: linear-gradient(180deg, #354387, #b480c2); 
+}
+
+.weather-icon {
+  width: 70%; 
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 code {
