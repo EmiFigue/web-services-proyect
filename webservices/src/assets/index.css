@@ -3,8 +3,6 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-  color: #333;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -12,38 +10,225 @@ body {
   font-style: normal;
   position: relative;
   overflow: hidden;
+  height: 100%;
+  min-height: 100%;
 }
 
-.circle-bg {
+.light-mode{
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.dark-mode{
+  background-color: #333;;
+  color: #f4f4f4;
+}
+
+
+.options-menu {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+  margin: 20px;
+  gap: 30px;
+}
+
+.options-menu button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.circle-bg-1 {
   position: absolute;
   top: -100px;
   right: -100px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(33, 150, 243, 0.8), rgba(33, 150, 243, 0));
   filter: blur(100px);
-  z-index: -1; /* Para que se coloque detrás del contenido */
+  z-index: 0; /* Para que se coloque detrás del contenido */
 }
 
-.circle-bg-orange {
+.light-mode .circle-bg-1 {
+background: radial-gradient(circle, rgba(8, 199, 233, 0.8), rgba(33, 150, 243, 0));
+}
+
+.dark-mode .circle-bg-1 {
+background: radial-gradient(circle, rgba(108, 110, 211, 0.8), rgba(33, 150, 243, 0));
+}
+
+.circle-bg-2 {
   position: absolute;
   bottom: -100px;
   left: -100px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(255, 152, 0, 0.8), rgba(255, 152, 0, 0));
+  background: radial-gradient(circle, rgba(255, 196, 0, 0.8), rgba(255, 152, 0, 0));
   filter: blur(100px);
-  z-index: -1; /* Para que se coloque detrás del contenido */
+  z-index: 0; /* Para que se coloque detrás del contenido */
 }
+
+.light-mode .circle-bg-2 {
+  background: radial-gradient(circle, rgba(255, 196, 0, 0.8), rgba(255, 152, 0, 0));
+  }
+  
+.dark-mode .circle-bg-2 {
+background: radial-gradient(circle, rgba(133, 59, 175, 0.8), rgba(33, 150, 243, 0));
+}
+  
 
 p {
   font-weight: 400;
-  color: #333333;
   line-height: 1.6;
 }
 
+.light-mode p {
+  color: #333333;
+}
+
+.dark-mode p {
+  color: #f4f4f4;
+}
+
+.preferences-button {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 5px;
+}
+
+.preferences-button:hover {
+  background-color: #217bf1;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.preference-item {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.preference-label {
+  margin: 0 10px;
+  font-size: 1rem;
+}
+
+.light-mode .modal{
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.dark-mode .modal{
+  background-color: rgba(112, 112, 112, 0.5);
+}
+
+.modal h3 {
+  margin-top: 0;
+}
+
+.close-button {
+  margin-top: 60px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+}
+
+.close-button:hover {
+  background-color: #e53935;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  width: 60px;
+  height: 34px;
+  margin: 0 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #888888a6;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.label-text {
+  margin-top: 40px;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
 button {
-  background-color: #61dafb;
+  background-color: #2196F3;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -54,11 +239,10 @@ button {
 }
 
 button:hover {
-  background-color: #21a1f1;
+  background-color: #217bf1;
 }
 
 .weather-info {
-  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -66,9 +250,17 @@ button:hover {
   max-width: 400px;
 }
 
+.dark-mode .weather-info h2, .dark-mode .weather-info h3 {
+  color: #f4f4f4; /* Color de texto para encabezados en modo oscuro */
+}
+
 .weather-info p {
   margin: 10px 0;
   font-weight: 500;
+}
+
+.dark-mode .weather-info p{
+  color: #f4f4f4;
 }
 
 .weather-icon-container {
