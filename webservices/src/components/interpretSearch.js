@@ -1,32 +1,30 @@
-export function searchOnData(database) {
-    checkDatabase(database);
-}
 
-function checkDatabase(database){
-    const fileInput = document.getElementById(database);
-    const reader = new FileReader();
+import { fetchWeather, fetchWeatherLat } from "./getApi";
 
-    reader.onload = function(event) {   
-        const text = event.target.result;
-        processData(text);
-    };       
-}
-function processData(csvData) {
-    const lines = csvData.split('\\n');
-    const result = [];
-  
-    const headers = lines[0].split(',');
-  
-    for (let i = 1; i < lines.length; i++) {
-      const obj = {};
-      const currentline = lines[i].split(',');
-  
-      headers.forEach((header, index) => {
-        obj[header] = currentline[index];
-      });
-  
-      result.push(obj);
-    }
-  
-    console.log(result);
+export function searchTicket (search, ticket){
+  if (isTicket(search)){
+    return fetchWeatherLat(searchInArray(search,ticket));
   }
+  else{
+    return fetchWeather(search);
+  }
+  return "";
+}
+
+function searchInArray (search,ticket){
+  let lat = "";
+  let lon = "";
+  for (let i=0; i<ticket.lenght;i++){
+    if (search.isEqual(search, ticket[i]) == true){
+      lat = ticket[i-1]
+      lon = ticket[i-2]
+      return (lat,lon)
+    }
+  }
+}
+function containsNumber(str) {
+  return !isNaN(parseFloat(str)) && isFinite(str);
+}
+function isTicket(search) {
+  return (search.lenght == 6 && containsNumber(search) == true);
+}

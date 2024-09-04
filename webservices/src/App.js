@@ -1,14 +1,31 @@
 import './assets/App.css';
-import { useState } from "react";
-import { fetchWeather } from './components/getApi';
+import { useEffect, useState } from "react";
+import { searchTicket } from './components/interpretSearch';
+import Papa from 'papaparse';
+import csvStr from'./assets/tickets.csv';
+
 
 function App() {
   const [search, setSearch] = useState("");
   const [weather, setWeather] = useState({});
+  const [tickets, setTickets] = useState({}); 
+  const csv = useEffect( () => (Papa.parse(csvStr, {
+   download: true ,
+   delimiter: "", // auto-detect 
+   newline: "", // auto-detect 
+   quoteChar: '"', 
+   escapeChar: '"', 
+   header: true, // creates array of {head:value} 
+   dynamicTyping: false, // convert values to numbers if possible
+   skipEmptyLines: true,
+   complete: ((result) => {setTickets(result.data)})
+ }))); 
   const searchPressed = () => {
-    fetchWeather(search)
+    searchTicket(search, tickets)
     .then ((res) => (setWeather(res)))
   };
+ 
+
   return (
     <div className="App">
       <header className="App-header">
