@@ -4,6 +4,7 @@ import { fetchWeather } from './components/getApi';
 import { searchTicket } from './components/interpretSearch';
 import Papa from 'papaparse';
 import csvStr from'./assets/tickets.csv';
+import { validarString } from './components/validarString';
 
 const api = {
   key: '39942a3074e7466c372775ab00ba986d',
@@ -59,6 +60,11 @@ function App() {
         console.error("Error fetching weather data: ", error);
       });
   };
+  const valida=()=>{
+    if(validarString(search)){
+      searchPressed()
+    }
+  }
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => !prevMode);
@@ -95,7 +101,7 @@ function App() {
         placeholder='Introduce ciudad'
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button onClick={searchPressed}>search</button>
+      <button onClick={valida}>search</button>
       {typeof weather.main == "undefined" ?
         ("") :
         (
