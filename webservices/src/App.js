@@ -1,6 +1,7 @@
 import './assets/App.css';
 import { useState } from "react";
 import { fetchWeather } from './components/getApi';
+import { validarString } from './components/validarString';
 
 const api = {
   key:'39942a3074e7466c372775ab00ba986d',
@@ -13,15 +14,21 @@ function App() {
     fetchWeather(search)
     .then ((res) => (setWeather(res)))
   };
+  const valida=()=>{
+    if(validarString(search)){
+      searchPressed()
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">
         <input 
+          required
           type='text'  
           placeholder='Introduce ciudad'
           onChange={(e) => setSearch(e.target.value)}
       />
-      <button onClick={searchPressed}>search</button>
+      <button onClick={valida}>search</button>
       {typeof weather.main == "undefined" ? 
       ("") : 
       (
