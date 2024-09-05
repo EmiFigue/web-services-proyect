@@ -1,30 +1,39 @@
 
 import { fetchWeather, fetchWeatherLat } from "./getApi";
 
+function searchInArray (search, ticket){
+  let lat = "";
+  let lon = "";
+  for (let i=0; i<ticket.length;i++){
+    if (search === ticket[i].ticket){
+      lat = ticket[i].destination_latitude;
+      lon = ticket[i].destination_longitude;
+      return {lat,lon}
+    }
+  }
+  return {lat:null,lon:null};
+}
+
 export function searchTicket (search, ticket){
   if (isTicket(search)){
-    return fetchWeatherLat(searchInArray(search,ticket));
+    let lat = searchInArray(search, ticket).lat;
+    let lon = searchInArray(search, ticket).lon;
+    if (lat && lon) {
+      return fetchWeatherLat(lat, lon);
+    } else {
+      console.error("No matching coordinates found.");
+      return Promise.reject("No matching coordinates found.");
+    }
   }
   else{
     return fetchWeather(search);
   }
-  return "";
 }
 
-function searchInArray (search,ticket){
-  let lat = "";
-  let lon = "";
-  for (let i=0; i<ticket.lenght;i++){
-    if (search.isEqual(search, ticket[i]) == true){
-      lat = ticket[i-1]
-      lon = ticket[i-2]
-      return (lat,lon)
-    }
-  }
-}
-function containsNumber(str) {
-  return !isNaN(parseFloat(str)) && isFinite(str);
-}
 function isTicket(search) {
-  return (search.lenght == 6 && containsNumber(search) == true);
+  const isAlphaNumeric = /^[A-Za-z0-9]{6}$/.test(search);
+  const hasLetter = /[A-Za-z]/.test(search);
+  const hasNumber = /[0-9]/.test(search);
+  
+  return isAlphaNumeric && hasLetter && hasNumber;
 }

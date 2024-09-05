@@ -20,6 +20,7 @@ function App() {
    skipEmptyLines: true,
    complete: ((result) => {setTickets(result.data)})
  }))); 
+
   const searchPressed = () => {
     searchTicket(search, tickets)
     .then ((res) => (setWeather(res)))

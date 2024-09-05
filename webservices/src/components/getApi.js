@@ -6,7 +6,7 @@ const api = {
     return fetch(`${api.base}weather?q=${search}&units=metric&appid=${api.key}&lang=es`)
       .then((response) => response.json());
   };
-  export const fetchWeatherLat = (search) => {
-    return fetch(`${api.base}weather?lat={lat}&lon={lon}&units=metric&appid=${api.key}&lang=es`)
+  export const fetchWeatherLat = (latitude,longitude) => {
+    return fetch(`${api.base}weather?lat=${latitude}&lon=${longitude}&appid=${api.key}&units=metric&lang=es`)
       .then((response) => response.json());
   };
