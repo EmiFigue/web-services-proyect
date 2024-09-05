@@ -17,11 +17,26 @@ body {
 .light-mode{
   background-color: #f4f4f4;
   color: #333;
+  z-index: 0;
 }
 
 .dark-mode{
-  background-color: #333;;
+  background-color: #333;
   color: #f4f4f4;
+  z-index: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+flex: 50%;
+padding: 20px;
 }
 
 
@@ -47,7 +62,7 @@ body {
   width: 400px;
   height: 400px;
   filter: blur(100px);
-  z-index: 0; /* Para que se coloque detrás del contenido */
+  z-index: -1;
 }
 
 .light-mode .circle-bg-1 {
@@ -66,7 +81,7 @@ background: radial-gradient(circle, rgba(108, 110, 211, 0.8), rgba(33, 150, 243,
   height: 400px;
   background: radial-gradient(circle, rgba(255, 196, 0, 0.8), rgba(255, 152, 0, 0));
   filter: blur(100px);
-  z-index: 0; /* Para que se coloque detrás del contenido */
+  z-index: -1; 
 }
 
 .light-mode .circle-bg-2 {
@@ -74,7 +89,7 @@ background: radial-gradient(circle, rgba(108, 110, 211, 0.8), rgba(33, 150, 243,
   }
   
 .dark-mode .circle-bg-2 {
-background: radial-gradient(circle, rgba(133, 59, 175, 0.8), rgba(33, 150, 243, 0));
+  background: radial-gradient(circle, rgba(133, 59, 175, 0.8), rgba(33, 150, 243, 0));
 }
   
 
@@ -236,6 +251,7 @@ button {
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+  z-index: 10;
 }
 
 button:hover {
