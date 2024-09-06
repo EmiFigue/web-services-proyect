@@ -37,4 +37,5 @@ function isTicket(search) {
   
   return isAlphaNumeric && hasLetter && hasNumber && search.length==6;
 }
-module.exports={isTicket, searchInArray}
+
+export default isTicket;
