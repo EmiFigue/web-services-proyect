@@ -14,7 +14,9 @@ const api = {
 
 function App() {
   const [search, setSearch] = useState("");
+  const [searchs, setSearchS] = useState("");
   const [weather, setWeather] = useState({});
+  const [weatherS, setWeatherS] = useState({});
   const [isDayTime, setIsDayTime] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMetric, setIsMetric] = useState(true);
@@ -60,9 +62,43 @@ function App() {
         console.error("Error fetching weather data: ", error);
       });
   };
+
+  const searchPressedSalida = () => {
+    searchTicket(searchs,tickets)
+      .then((res) => {
+        if (res && res.sys && typeof res.timezone !== "undefined") {
+
+
+          (setWeatherS(res));
+
+
+          const currentTimeUTC = res.dt;
+          const timezoneOffset = res.timezone;
+          const localTime = currentTimeUTC + timezoneOffset;
+
+          const sunrise = res.sys.sunrise + timezoneOffset;
+          const sunset = res.sys.sunset + timezoneOffset;
+
+          // Determina si es de día o de noche
+          const isDay = localTime >= sunrise && localTime < sunset;
+          console.log("Es de día?", isDay);
+          setIsDayTime(isDay);
+        } else {
+          console.error("Datos insuficientes para determinar si es de día o de noche", res);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching weather data: ", error);
+      });
+  };
   const valida=()=>{
     if(validarString(search)){
       searchPressed()
+    }
+  }
+  const validaSalida =()=>{
+    if(validarString(search)){
+      searchPressedSalida()
     }
   }
 
@@ -99,21 +135,21 @@ function App() {
       <input
         type='text'
         placeholder='Introduce ciudad de salida'
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearchS(e.target.value)}
       />
-      <button onClick={valida}>search</button>
-      {typeof weather.main == "undefined" ?
+      <button onClick={validaSalida}>search</button>
+      {typeof weatherS.main == "undefined" ?
         ("") :
         (
           <div class="row">
             <div class="column">
-              <p> Ciudad destino: {weather.name} </p>
-              <p> {weather.weather[0].description} </p>
-              <p> Temperatura: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
-              <p> Sensación térmica: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
+              <p> Ciudad salida: {weatherS.name} </p>
+              <p> {weatherS.weather[0].description} </p>
+              <p> Temperatura: {isMetric ? weatherS.main.feels_like : (weatherS.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
+              <p> Sensación térmica: {isMetric ? weatherS.main.feels_like : (weatherS.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
               <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
                 <img
-                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  src={`https://openweathermap.org/img/wn/${weatherS.weather[0].icon}@2x.png`}
                   alt="Icon"
                   className="weather-icon"
                 />
@@ -134,7 +170,7 @@ function App() {
         ("") :
          ( <div class="row">
             <div class="column">
-              <p> Ciudad llegada: {weather.name} </p>
+              <p> Ciudad destino: {weather.name} </p>
               <p> {weather.weather[0].description} </p>
               <p> Temperatura: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
               <p> Sensación térmica: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
