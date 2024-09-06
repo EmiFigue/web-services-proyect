@@ -98,29 +98,14 @@ function App() {
 
       <input
         type='text'
-        placeholder='Introduce ciudad'
+        placeholder='Introduce ciudad de salida'
         onChange={(e) => setSearch(e.target.value)}
       />
       <button onClick={valida}>search</button>
       {typeof weather.main == "undefined" ?
         ("") :
         (
-
-
           <div class="row">
-            <div class="column">
-              <p> Ciudad llegada: {weather.name} </p>
-              <p> {weather.weather[0].description} </p>
-              <p> Temperatura: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
-              <p> Sensación térmica: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
-              <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                  alt="Icon"
-                  className="weather-icon"
-                />
-              </div>
-            </div>
             <div class="column">
               <p> Ciudad destino: {weather.name} </p>
               <p> {weather.weather[0].description} </p>
@@ -138,6 +123,31 @@ function App() {
 
 
         )}
+
+        <input
+        type='text'
+        placeholder='Introduce ciudad de destino'
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <button onClick={valida}>search</button>
+      {typeof weather.main == "undefined" ?
+        ("") :
+         ( <div class="row">
+            <div class="column">
+              <p> Ciudad llegada: {weather.name} </p>
+              <p> {weather.weather[0].description} </p>
+              <p> Temperatura: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
+              <p> Sensación térmica: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
+              <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  alt="Icon"
+                  className="weather-icon"
+                />
+              </div>
+            </div>
+          </div>
+)}
 
 
 
