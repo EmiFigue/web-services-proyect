@@ -35,5 +35,6 @@ function isTicket(search) {
   const hasLetter = /[A-Za-z]/.test(search);
   const hasNumber = /[0-9]/.test(search);
   
-  return isAlphaNumeric && hasLetter && hasNumber;
+  return isAlphaNumeric && hasLetter && hasNumber && search.length==6;
 }
+module.exports={isTicket, searchInArray}
