@@ -1,0 +1,14 @@
+{
+  "homepage": "https://EmiFigue.github.io/web-services-proyect",
+  "dependencies": {
+    "react-papaparse": "^4.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "react-script test",
+    "eject": "react-scripts eject"
+  }
+}
