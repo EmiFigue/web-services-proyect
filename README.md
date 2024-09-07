@@ -40,6 +40,7 @@ AICM Clima es una aplicación web con una interfaz gráfica intuitiva que permit
 ```bash
   npm run start
 ```
+5. Alternativamente en Settings, Pages se puede acceder a la pagina
 
 
 ## Ejecutar pruebas
