@@ -138,12 +138,12 @@ function App() {
         onChange={(e) => setSearchS(e.target.value)}
       />
       <button onClick={validaSalida}>search</button>
-      {typeof weatherS.main == "undefined" ?
+      {typeof weatherS.main =="undefined" ?
         ("") :
         (
           <div class="row">
             <div class="column">
-              <p> Ciudad salida: {weatherS.name} </p>
+              <p> Ciudad destino: {weatherS.name} </p>
               <p> {weatherS.weather[0].description} </p>
               <p> Temperatura: {isMetric ? weatherS.main.feels_like : (weatherS.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
               <p> Sensación térmica: {isMetric ? weatherS.main.feels_like : (weatherS.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
@@ -160,12 +160,7 @@ function App() {
 
         )}
 
-        <input
-        type='text'
-        placeholder='Introduce ciudad de destino'
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button onClick={valida}>search</button>
+
       {typeof weather.main == "undefined" ?
         ("") :
          ( <div class="row">
