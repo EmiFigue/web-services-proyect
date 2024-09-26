@@ -1,32 +1,47 @@
 
 import { fetchWeather, fetchWeatherLat } from "./getApi";
 
-function searchInArray (search, ticket){
-  let lat = "";
-  let lon = "";
-  for (let i=0; i<ticket.length;i++){
-    if (search === ticket[i].ticket){
-      lat = ticket[i].destination_latitude;
-      lon = ticket[i].destination_longitude;
-      return {lat,lon}
+function searchInArray (search, tickets){
+  let latDep = "";
+  let lonDep = "";
+  let latDest = "";
+  let lonDest = "";
+
+  for (let i = 0; i < tickets.length; i++) {
+    if (search === tickets[i].ticket || search === tickets[i].origin || search === tickets[i].destination) {
+      latDep = tickets[i].origin_latitude;
+      lonDep = tickets[i].origin_longitude;
+      latDest = tickets[i].destination_latitude;
+      lonDest = tickets[i].destination_longitude;
+
+      return { latDep, lonDep, latDest, lonDest };
     }
   }
-  return {lat:null,lon:null};
+
+  return { latDep: null, lonDep: null, latDest: null, lonDest: null };
 }
 
-export function searchTicket (search, ticket){
-  if (isTicket(search)){
-    let lat = searchInArray(search, ticket).lat;
-    let lon = searchInArray(search, ticket).lon;
-    if (lat && lon) {
-      return fetchWeatherLat(lat, lon);
+export function searchTicket(search, tickets) {
+  if (isTicket(search)) {
+    const { latDep, lonDep, latDest, lonDest } = searchInArray(search, tickets);
+
+    if (latDep && lonDep && latDest && lonDest) {
+      return Promise.all([
+        fetchWeatherLat(latDep, lonDep),
+        fetchWeatherLat(latDest, lonDest)
+      ]);
     } else {
-      console.error("No matching coordinates found.");
-      return Promise.reject("No matching coordinates found.");
+      return Promise.reject("No matching coordinates found for the ticket.");
     }
-  }
-  else{
-    return fetchWeather(search);
+  } else {
+    const { latDep, lonDep, latDest, lonDest } = searchInArray(search, tickets);
+    
+    if (latDep && lonDep) {
+      return fetchWeatherLat(latDep, lonDep);
+    } else {
+  
+      return fetchWeather(search);
+    }
   }
 }
 
@@ -35,7 +50,7 @@ function isTicket(search) {
   const hasLetter = /[A-Za-z]/.test(search);
   const hasNumber = /[0-9]/.test(search);
   
-  return isAlphaNumeric && hasLetter && hasNumber && search.length==6;
+  return isAlphaNumeric && hasLetter && hasNumber && search.length === 6;
 }
 
 export default isTicket;

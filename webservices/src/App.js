@@ -1,113 +1,58 @@
 import './assets/App.css';
 import { useState, useEffect } from "react";
-import { fetchWeather } from './components/getApi';
 import { searchTicket } from './components/interpretSearch';
 import Papa from 'papaparse';
 import csvStr from'./assets/tickets.csv';
-import { validarString } from './components/validarString';
-
-const api = {
-  key: '39942a3074e7466c372775ab00ba986d',
-  base: 'http://api.openweathermap.org/data/2.5/'
-};
-
 
 function App() {
   const [search, setSearch] = useState("");
-  const [searchs, setSearchS] = useState("");
-  const [weather, setWeather] = useState({});
-  const [weatherS, setWeatherS] = useState({});
-  const [isDayTime, setIsDayTime] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isMetric, setIsMetric] = useState(true);
-  const [showPreferences, setShowPreferences] = useState(false);
-  const [tickets, setTickets] = useState({}); 
-  const csv = useEffect( () => (Papa.parse(csvStr, {
-   download: true ,
-   delimiter: "", // auto-detect 
-   newline: "", // auto-detect 
-   quoteChar: '"', 
-   escapeChar: '"', 
-   header: true, // creates array of {head:value} 
-   dynamicTyping: false, // convert values to numbers if possible
-   skipEmptyLines: true,
-   complete: ((result) => {setTickets(result.data)})
- }))); 
+  const [weatherDeparture, setWeatherDeparture] = useState(null);
+  const [weatherDestination, setWeatherDestination] = useState(null);
+  const [isMetric, setIsMetric] = useState(true); // Unit toggle
+  const [isDayTime, setIsDayTime] = useState(true); // Day/night toggle
+  const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode toggle
+  const [showPreferences, setShowPreferences] = useState(false); // Preferences modal
+  const [tickets, setTickets] = useState({});
+
+  useEffect(() => {
+    Papa.parse(csvStr, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (result) => {
+        setTickets(result.data);
+      },
+    });
+  }, []);
+
+
+  const handleInputChange = (e) => {
+    setSearch(e.target.value.toUpperCase());
+  };
 
   const searchPressed = () => {
-    searchTicket(search,tickets)
+    searchTicket(search, tickets)
       .then((res) => {
-        if (res && res.sys && typeof res.timezone !== "undefined") {
-
-
-          (setWeather(res));
-
-
-          const currentTimeUTC = res.dt;
-          const timezoneOffset = res.timezone;
-          const localTime = currentTimeUTC + timezoneOffset;
-
-          const sunrise = res.sys.sunrise + timezoneOffset;
-          const sunset = res.sys.sunset + timezoneOffset;
-
-          // Determina si es de día o de noche
-          const isDay = localTime >= sunrise && localTime < sunset;
-          console.log("Es de día?", isDay);
-          setIsDayTime(isDay);
+        if (Array.isArray(res)) {
+          const [departureWeather, destinationWeather] = res;
+          setWeatherDeparture(departureWeather);
+          setWeatherDestination(destinationWeather);
         } else {
-          console.error("Datos insuficientes para determinar si es de día o de noche", res);
+          setWeatherDeparture(res);
+          setWeatherDestination(null);
         }
       })
       .catch((error) => {
         console.error("Error fetching weather data: ", error);
       });
-  };
-
-  const searchPressedSalida = () => {
-    searchTicket(searchs,tickets)
-      .then((res) => {
-        if (res && res.sys && typeof res.timezone !== "undefined") {
-
-
-          (setWeatherS(res));
-
-
-          const currentTimeUTC = res.dt;
-          const timezoneOffset = res.timezone;
-          const localTime = currentTimeUTC + timezoneOffset;
-
-          const sunrise = res.sys.sunrise + timezoneOffset;
-          const sunset = res.sys.sunset + timezoneOffset;
-
-          // Determina si es de día o de noche
-          const isDay = localTime >= sunrise && localTime < sunset;
-          console.log("Es de día?", isDay);
-          setIsDayTime(isDay);
-        } else {
-          console.error("Datos insuficientes para determinar si es de día o de noche", res);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data: ", error);
-      });
-  };
-  const valida=()=>{
-    if(validarString(search)){
-      searchPressed()
-    }
-  }
-  const validaSalida =()=>{
-    if(validarString(search)){
-      searchPressedSalida()
-    }
-  }
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => !prevMode);
   };
 
   const toggleUnits = () => {
-    setIsMetric(prevUnits => !prevUnits);
+    setIsMetric(!isMetric);
+  };
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   const openPreferences = () => {
@@ -118,77 +63,102 @@ function App() {
     setShowPreferences(false);
   };
 
+  const calculateDayTime = (weather) => {
+    const currentTimeUTC = weather.dt;
+    const timezoneOffset = weather.timezone;
+    const localTime = currentTimeUTC + timezoneOffset;
 
+    const sunrise = weather.sys.sunrise + timezoneOffset;
+    const sunset = weather.sys.sunset + timezoneOffset;
+    setIsDayTime(localTime >= sunrise && localTime < sunset);
+  };
+
+  const renderWeather = (weather, locationName) => {
+    if (!weather || !weather.main || !weather.weather || !weather.weather[0]) return null;
+
+
+    calculateDayTime(weather);
+
+    return (
+      <div className="weather-info">
+        <h3>{locationName}: {weather.name}</h3>
+        <p>{weather.weather[0].description}</p>
+        <p>
+          Temperatura: {isMetric ? weather.main.temp : (weather.main.temp * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}
+        </p>
+        <p>
+          Sensación térmica: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}
+        </p>
+        <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
+          <img
+            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+            alt="Weather Icon"
+            className="weather-icon"
+          />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className={`App ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="circle-bg-1"></div>
       <div className="circle-bg-2"></div>
       <header className="App-header">
-
         <h2>AICM Clima</h2>
       </header>
 
       <button onClick={openPreferences} className="preferences-button">Preferencias</button>
 
-
       <input
         type='text'
-        placeholder='Introduce ciudad de salida'
-        onChange={(e) => setSearchS(e.target.value)}
+        placeholder='Introduce ciudad o ticket'
+        onChange={handleInputChange} 
       />
-      <button onClick={validaSalida}>search</button>
-      {typeof weatherS.main =="undefined" ?
-        ("") :
-        (
-          <div class="row">
-            <div class="column">
-              <p> Ciudad destino: {weatherS.name} </p>
-              <p> {weatherS.weather[0].description} </p>
-              <p> Temperatura: {isMetric ? weatherS.main.feels_like : (weatherS.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
-              <p> Sensación térmica: {isMetric ? weatherS.main.feels_like : (weatherS.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
-              <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weatherS.weather[0].icon}@2x.png`}
-                  alt="Icon"
-                  className="weather-icon"
-                />
-              </div>
-            </div>
+      <button onClick={searchPressed}>Search</button>
+
+      {/* Salida*/}
+      {weatherDeparture && weatherDeparture.weather && weatherDeparture.weather[0] ? (
+        <div>
+          <h3>Ciudad de salida: {weatherDeparture.name}</h3>
+          <p>{weatherDeparture.weather[0].description}</p>
+          <p>Temperatura: {weatherDeparture.main ? (isMetric ? weatherDeparture.main.temp : (weatherDeparture.main.temp * 9 / 5 + 32).toFixed(2)) : 'N/A'}°{isMetric ? 'C' : 'F'}</p>
+          <p>Sensación térmica: {weatherDeparture.main ? (isMetric ? weatherDeparture.main.feels_like : (weatherDeparture.main.feels_like * 9 / 5 + 32).toFixed(2)) : 'N/A'}°{isMetric ? 'C' : 'F'}</p>
+          <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
+            <img
+              src={`https://openweathermap.org/img/wn/${weatherDeparture.weather[0].icon}@2x.png`}
+              alt="Weather Icon"
+              className="weather-icon"
+            />
           </div>
+        </div>
+      ) : (
+        weatherDeparture && <p>No se pudo obtener el clima de salida.</p>
+      )}
 
-
-        )}
-
-
-      {typeof weather.main == "undefined" ?
-        ("") :
-         ( <div class="row">
-            <div class="column">
-              <p> Ciudad destino: {weather.name} </p>
-              <p> {weather.weather[0].description} </p>
-              <p> Temperatura: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
-              <p> Sensación térmica: {isMetric ? weather.main.feels_like : (weather.main.feels_like * 9 / 5 + 32).toFixed(2)}°{isMetric ? 'C' : 'F'}</p>
-              <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-                  alt="Icon"
-                  className="weather-icon"
-                />
-              </div>
-            </div>
+      {/* Llegada */}
+      {weatherDestination && weatherDestination.weather && weatherDestination.weather[0] ? (
+        <div>
+          <h3>Ciudad de destino: {weatherDestination.name}</h3>
+          <p>{weatherDestination.weather[0].description}</p>
+          <p>Temperatura: {weatherDestination.main ? (isMetric ? weatherDestination.main.temp : (weatherDestination.main.temp * 9 / 5 + 32).toFixed(2)) : 'N/A'}°{isMetric ? 'C' : 'F'}</p>
+          <p>Sensación térmica: {weatherDestination.main ? (isMetric ? weatherDestination.main.feels_like : (weatherDestination.main.feels_like * 9 / 5 + 32).toFixed(2)) : 'N/A'}°{isMetric ? 'C' : 'F'}</p>
+          <div className={`weather-icon-container ${isDayTime ? 'day' : 'night'}`}>
+            <img
+              src={`https://openweathermap.org/img/wn/${weatherDestination.weather[0].icon}@2x.png`}
+              alt="Weather Icon"
+              className="weather-icon"
+            />
           </div>
-)}
-
-
-
-
+        </div>
+      ) : (
+        weatherDestination && <p>No se pudo obtener el clima de destino.</p>
+      )}
 
       {showPreferences && (
         <div className="modal-overlay">
           <div className="modal">
             <h3>Preferencias</h3>
-
 
             <div className="preference-item">
               <span className="preference-label">Claro</span>
@@ -208,12 +178,10 @@ function App() {
               <span className="preference-label">Imperial</span>
             </div>
 
-
             <button onClick={closePreferences} className="close-button">Cerrar</button>
           </div>
         </div>
       )}
-
     </div>
   );
 }
