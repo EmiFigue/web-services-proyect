@@ -31,7 +31,6 @@ export function searchTicket(search, tickets) {
         fetchWeatherLat(latDest, lonDest)
       ]);
     } else {
-      alert("No existe el ticket, intenta denuevo.");
       return null;
     }
   } else {
@@ -40,7 +39,6 @@ export function searchTicket(search, tickets) {
     if (latDep && lonDep) {
       return fetchWeatherLat(latDep, lonDep);
     } else {
-  
       return fetchWeather(search);
     }
   }

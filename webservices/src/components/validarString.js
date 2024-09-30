@@ -17,8 +17,6 @@ export const validarString = (palabra) =>{
         }
         return true
     } catch (error) {
-        //Alerta de caracter invalido
-        alert("Input contiene caracteres inválidos, intente denuevo únicamente con letras y números")
         return false
     }
 };

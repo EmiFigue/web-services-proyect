@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { searchTicket } from './components/interpretSearch';
 import Papa from 'papaparse';
 import csvStr from'./assets/tickets.csv';
+import { validarString } from './components/validarString';
 
 function App() {
   const [search, setSearch] = useState("");
@@ -13,6 +14,7 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode toggle
   const [showPreferences, setShowPreferences] = useState(false); // Preferences modal
   const [tickets, setTickets] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     Papa.parse(csvStr, {
@@ -31,23 +33,37 @@ function App() {
   };
 
   const searchPressed = () => {
-        if (searchTicket(search, tickets) != undefined)
-          searchTicket(search, tickets)
-      .then((res) => {
-        if (Array.isArray(res)) {
-          const [departureWeather, destinationWeather] = res;
-          setWeatherDeparture(departureWeather);
-          setWeatherDestination(destinationWeather);
-        } else {
-          setWeatherDeparture(res);
-          setWeatherDestination(null);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data: ", error);
-      });
-  };
+    setErrorMessage(''); // Reset error message before new search
 
+    const result = searchTicket(search, tickets);
+    const valida = search
+    if(validarString(valida)==false) {
+      setErrorMessage('Input contiene caracteres inválidos, intente denuevo únicamente con letras y números');
+      setWeatherDeparture(null);
+      setWeatherDestination(null);
+    }
+    else if (result == undefined) {
+      setErrorMessage('No existe el ticket buscado.');
+      setWeatherDeparture(null);
+      setWeatherDestination(null);
+    } else {
+      searchTicket(search, tickets)
+        .then((res) => {
+          if (Array.isArray(res)) {
+            const [departureWeather, destinationWeather] = res;
+            setWeatherDeparture(departureWeather);
+            setWeatherDestination(destinationWeather);
+          } else {
+            setWeatherDeparture(res);
+            setWeatherDestination(null);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching weather data: ", error);
+          setErrorMessage('Error fetching weather data.'); // Handle any other errors
+        });
+    }
+  };
   const toggleUnits = () => {
     setIsMetric(!isMetric);
   };
@@ -117,6 +133,7 @@ function App() {
         onChange={handleInputChange} 
       />
       <button onClick={searchPressed}>Search</button>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       {/* Salida*/}
       {weatherDeparture && weatherDeparture.weather && weatherDeparture.weather[0] ? (
@@ -134,7 +151,7 @@ function App() {
           </div>
         </div>
       ) : (
-        weatherDeparture && <p>No se pudo obtener el clima de destino.</p>
+        weatherDeparture && <p>No existe ciudad buscada.</p>
       )}
 
       {/* Llegada */}
