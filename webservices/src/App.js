@@ -31,7 +31,8 @@ function App() {
   };
 
   const searchPressed = () => {
-    searchTicket(search, tickets)
+        if (searchTicket(search, tickets) != undefined)
+          searchTicket(search, tickets)
       .then((res) => {
         if (Array.isArray(res)) {
           const [departureWeather, destinationWeather] = res;
@@ -133,7 +134,7 @@ function App() {
           </div>
         </div>
       ) : (
-        weatherDeparture && <p>No se pudo obtener el clima de salida.</p>
+        weatherDeparture && <p>No se pudo obtener el clima de destino.</p>
       )}
 
       {/* Llegada */}

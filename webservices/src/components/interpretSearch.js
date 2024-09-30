@@ -31,7 +31,8 @@ export function searchTicket(search, tickets) {
         fetchWeatherLat(latDest, lonDest)
       ]);
     } else {
-      return Promise.reject("No matching coordinates found for the ticket.");
+      alert("No existe el ticket, intenta denuevo.");
+      return null;
     }
   } else {
     const { latDep, lonDep, latDest, lonDest } = searchInArray(search, tickets);

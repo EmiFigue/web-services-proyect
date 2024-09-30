@@ -12,12 +12,13 @@ export const validarString = (palabra) =>{
             //Si el resultado de abc.search(letra)==-1 significa que el caracter no es valido y lanza un error
             let letra=palabra.charAt(i)
             if (abc.search(letra)==-1){
-                break
+                return false
             }
         }
         return true
     } catch (error) {
         //Alerta de caracter invalido
-        alert("Ingrese un input valido")
+        alert("Input contiene caracteres inválidos, intente denuevo únicamente con letras y números")
+        return false
     }
 };
