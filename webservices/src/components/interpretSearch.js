@@ -1,6 +1,13 @@
 
 import { fetchWeather, fetchWeatherLat } from "./getApi";
 
+/**
+ * Busca longitud y latitud en un array parseado de un csv
+ *
+ * @param {string} search El ticket a buscar
+ * @param {array} tickets El array de tickets
+ * @returns {{ latDep: string; lonDep: string; latDest: string; lonDest: string; }\}
+ */
 function searchInArray (search, tickets){
   let latDep = "";
   let lonDep = "";
@@ -22,6 +29,13 @@ function searchInArray (search, tickets){
 }
 
 
+/**
+ * Busca la iata y regresa la ciudad correspondiente
+ *
+ * @param {string} search La iata a buscar
+ * @param {array} iata El array de iata
+ * @returns {(string | { ciudad: any; })\}
+ */
 function searchIata (search,iata){
   let ciudad = "";
 
@@ -34,6 +48,15 @@ function searchIata (search,iata){
   return {ciudad: null}
 }
 
+/**
+ * Procesa la busqueda de un ticket, ciudad o iata
+ *
+ * @export
+ * @param {string} search la busqueda
+ * @param {array} tickets el array de los tickets
+ * @param {array} iata el array de iata 
+ * @returns {json} Objeto con la información del clima o null si no se encuentra
+ */
 export function searchTicket(search, tickets, iata) {
   if (isTicket(search)) {
     const { latDep, lonDep, latDest, lonDest } = searchInArray(search, tickets);
@@ -51,7 +74,7 @@ export function searchTicket(search, tickets, iata) {
     if (ciudad){
       return fetchWeather(ciudad);
     }else{
-      return false
+      return null;
     }
   }else {
     const { latDep, lonDep, latDest, lonDest } = searchInArray(search, tickets);
@@ -63,6 +86,12 @@ export function searchTicket(search, tickets, iata) {
   }
 }
 
+/**
+ * Revisa si la busqueda es un ticket
+ *
+ * @param {string} search La busqueda
+ * @returns {boolean} True si es un ticket, false si no
+ */
 function isTicket(search) {
   const isAlphaNumeric = /^[A-Za-z0-9]{6}$/.test(search);
   const hasLetter = /[A-Za-z]/.test(search);
@@ -71,6 +100,12 @@ function isTicket(search) {
   return isAlphaNumeric && hasLetter && hasNumber && search.length === 6;
 }
 
+/**
+ * Revisa si la busqueda es una iata
+ *
+ * @param {string} search La busqueda
+ * @returns {boolean} True si es una iata, false si no
+ */
 function isIata(search) {
   const hasLetter = /[A-Za-z]/.test(search);
   return hasLetter && search.length === 3;

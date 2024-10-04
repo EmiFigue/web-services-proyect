@@ -6,6 +6,11 @@ import csvStr from'./assets/tickets.csv';
 import { validarString } from './components/validarString';
 import iataStr from './assets/ciudades_iata.csv';
 
+/**
+ * Función principal de la aplicación, maneja el estado y las funciones de la aplicación.
+ *
+ * @returns {JSX.Element} La aplicación
+ */
 function App() {
   const [search, setSearch] = useState("");
   const [weatherDeparture, setWeatherDeparture] = useState(null);
@@ -49,7 +54,7 @@ function App() {
   };
 
   const searchPressed = () => {
-    setErrorMessage(''); // Reset error message before new search
+    setErrorMessage(''); // Reinicia el mensaje de error
 
     const result = searchTicket(search, tickets, iata);
     const valida = search

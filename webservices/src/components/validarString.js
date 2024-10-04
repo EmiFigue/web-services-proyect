@@ -1,8 +1,9 @@
-/*
-Función que valida que el input in gresado en App.js sea valido, solo acepta letras y números
-@param palabra String a verificar
-@return true si es valida la String 
-*/
+/**
+ * Valida que el input ingresado sea valido, solo acepta letras y números
+ *
+ * @param {string} palabra a validar
+ * @returns {boolean} Regresa true si es valido, false si no
+ */
 export const validarString = (palabra) =>{
     try {
         //Posibles caracteres validos
