@@ -25,7 +25,7 @@ function App() {
   const [tickets, setTickets] = useState({});
   const [iata, setIata] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
-
+  // Parsea el archivo de tickets
   useEffect(() => {
     Papa.parse(csvStr, {
       download: true,
@@ -36,7 +36,7 @@ function App() {
       },
     });
   }, []);
-
+  // Parsea el archivo de iata
   useEffect(() => {
     Papa.parse(iataStr, {
       download: true,
@@ -52,7 +52,7 @@ function App() {
   const handleInputChange = (e) => {
     setSearch(e.target.value.toUpperCase());
   };
-
+  // Busca el ticket o ciudad en la API y manda los errores pertinentes
   const searchPressed = () => {
     setErrorMessage(''); // Reinicia el mensaje de error
 
