@@ -1,9 +1,5 @@
-import dotenv from './.env';
-
-dotenv.config();
-
 const api = {
-  key: process.env.API_KEY,
+  key: '39942a3074e7466c372775ab00ba986d', //API Key deberia permanecer privada, para facilidad del proyecto y al ser una key gratuita se deja publica.
   base: 'http://api.openweathermap.org/data/2.5/'
 };
   /**

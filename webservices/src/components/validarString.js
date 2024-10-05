@@ -12,7 +12,7 @@ export const validarString = (palabra) =>{
         for (var i=0;i<len;i++){
             //Si el resultado de abc.search(letra)==-1 significa que el caracter no es valido y lanza un error
             let letra=palabra.charAt(i)
-            if (abc.search(letra)==-1){
+            if (abc.search(letra)===-1){
                 return false
             }
         }
