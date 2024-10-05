@@ -11,17 +11,20 @@ body {
   position: relative;
   overflow: hidden;
   height: 100%;
-  min-height: 100%;
+  min-height: 100%;  
+  background-size: cover;
+  overflow: scroll;  
+  overflow-x: hidden;  
 }
 
 .light-mode{
-  background-color: #f4f4f4;
+  background: url('./LightBackground.svg') no-repeat center center fixed;
   color: #333;
   z-index: 0;
 }
 
 .dark-mode{
-  background-color: #333;
+  background: url('./DarkBackground.svg') no-repeat center center fixed;
   color: #f4f4f4;
   z-index: 0;
 }
@@ -53,45 +56,7 @@ padding: 20px;
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
-}
-
-.circle-bg-1 {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 400px;
-  height: 400px;
-  filter: blur(100px);
-  z-index: -1;
-}
-
-.light-mode .circle-bg-1 {
-background: radial-gradient(circle, rgba(8, 199, 233, 0.8), rgba(33, 150, 243, 0));
-}
-
-.dark-mode .circle-bg-1 {
-background: radial-gradient(circle, rgba(108, 110, 211, 0.8), rgba(33, 150, 243, 0));
-}
-
-.circle-bg-2 {
-  position: absolute;
-  bottom: -100px;
-  left: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255, 196, 0, 0.8), rgba(255, 152, 0, 0));
-  filter: blur(100px);
-  z-index: -1; 
-}
-
-.light-mode .circle-bg-2 {
-  background: radial-gradient(circle, rgba(255, 196, 0, 0.8), rgba(255, 152, 0, 0));
-  }
-  
-.dark-mode .circle-bg-2 {
-  background: radial-gradient(circle, rgba(133, 59, 175, 0.8), rgba(33, 150, 243, 0));
-}
-  
+}  
 
 p {
   font-weight: 400;
@@ -141,7 +106,7 @@ p {
   padding: 20px;
   border-radius: 10px;
   width: 300px;
-  height: 300px;
+  height: 450px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
@@ -181,7 +146,7 @@ p {
 }
 
 .close-button:hover {
-  background-color: #e53935;
+  background-color: #cf2e2b;
 }
 
 
@@ -218,7 +183,7 @@ p {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: #ccc;
   transition: .4s;
   border-radius: 50%;
 }
@@ -254,7 +219,6 @@ button {
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
-  z-index: 10;
 }
 
 button:hover {
@@ -262,16 +226,34 @@ button:hover {
 }
 
 .weather-info {
+  flex: 1 1 100%;
+  min-width: 0px; 
+  max-width: 1000px;   
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   padding: 20px;
-  margin: 20px auto;
-  max-width: 400px;
+  margin: 20px auto;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
 }
 
 .dark-mode .weather-info h2, .dark-mode .weather-info h3 {
   color: #f4f4f4; /* Color de texto para encabezados en modo oscuro */
 }
+
+.dark-mode .weather-info{
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.light-mode .weather-info{
+  background: rgba(255, 255, 255, 0.6);
+}
+
 
 .weather-info p {
   margin: 10px 0;
@@ -281,6 +263,21 @@ button:hover {
 .dark-mode .weather-info p{
   color: #f4f4f4;
 }
+
+.weather-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible; 
+}
+
 
 .weather-icon-container {
   display: flex;
@@ -316,4 +313,75 @@ input[type="text"] {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.large-font {
+  font-size: 1.25rem; 
+}
+
+.large-font-input {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 700px) {
+
+  body {
+    font-size: 17px;
+    overflow-x: hidden;
+  }
+
+  header.App-header {
+    margin-top: 40px;
+    font-size: 1.5rem;
+  }
+
+  .weather-container {
+    flex-direction: column;   
+    align-items: center;
+    gap: 15px;      
+  }
+
+  .weather-info {
+    flex: 1 1 100%;           
+    max-width: none;   
+    min-width: none;      
+  }
+
+  .detailed-weather-info {
+    font-size: 1rem;
+  }
+
+  .weather-icon {
+    width: 60%; 
+  }
+
+  button, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .preferences-button {
+    width: 40%;
+    max-width: 220px;
+    font-size: 1rem;
+  }
+
+  .modal {
+    width: 100%;
+    height: 40%;
+    max-width: 300px;
+    padding: 20px;
+  }
+
+  .close-button {
+    font-size: 1rem;
+  }
+
+  .preference-item {
+    flex-direction: row;
+    gap: 15px;
+  }
+
 }

@@ -1,0 +1,531 @@
+﻿país,ciudad,iata
+Afganistán,Kabul,KBL
+Albania,Tirana,TIA
+Alemania,Berlin,BER
+Alemania,Cologne,CGN
+Alemania,Düsseldorf,DUS
+Alemania,Frankfurt,FRA
+Alemania,Hamburg,HAM
+Alemania,Munich,MUC
+Alemania,Stuttgart,STR
+Angola,Luanda,LAD
+Arabia Saudita,Dhahran,DHA
+Arabia Saudita,Jeddah,JED
+Arabia Saudita,Riyadh,RUH
+Argelia,Argel Al,ALG
+Argentina,Alto Río Senguer,ARR
+Argentina,Bariloche,BRC
+Argentina,Bolivar,BLR
+Argentina,Buenos Aires,BUE
+Argentina,Catamarca,CTC
+Argentina,Caviahue,CVH
+Argentina,Chapelco,CPC
+Argentina,Choele choel,OEL
+Argentina,Chos malal,CHM
+Argentina,Colonia catriel,CLT
+Argentina,Comodoro Rivadavia,CRD
+Argentina,Concordia,COC
+Argentina,Cordoba,COR
+Argentina,Coronel Suarez,CSU
+Argentina,Corrientes,CNQ
+Argentina,Esquel,EQS
+Argentina,Formosa,FMA
+Argentina,General Pico,GPO
+Argentina,General Roca,GNR
+Argentina,Gobernador Gregores,GGS
+Argentina,Goya,OYA
+Argentina,Iguazu,IGR
+Argentina,Ingeniero Jacobacci,IJC
+Argentina,Jujuy,JUJ
+Argentina,La Plata,LPG
+Argentina,La Rioja,IRJ
+Argentina,Loncopue,LCP
+Argentina,Malargue,MLG
+Argentina,Mar del Plata,MDQ
+Argentina,Mendoza,MDZ
+Argentina,Necochea,NEC
+Argentina,Neuquen,NQN
+Argentina,Olavarria,OLC
+Argentina,Parana,PRA
+Argentina,Pinamar,PAJ
+Argentina,Posadas,PSS
+Argentina,Puerto Deseado,PUD
+Argentina,Puerto madryn,DRY
+Argentina,Reconquista,RCQ
+Argentina,Resistencia,RES
+Argentina,Rincon de los sauces,RNS
+Argentina,Rio cuarto,RCU
+Argentina,Río Gallegos,RGL
+Argentina,Rio Grande,RGA
+Argentina,Rio Mayo,ROY
+Argentina,Rio Turbio,RYO
+Argentina,Rosario,ROS
+Argentina,Salta,SLA
+Argentina,San Antonio Oeste,OES
+Argentina,San Juan,UAQ
+Argentina,San Julian,ULA
+Argentina,San Luis,LUQ
+Argentina,San Rafael,AFA
+Argentina,Santa Cruz,RZA
+Argentina,Santa Fe,SFN
+Argentina,Santa Rosa,RSA
+Argentina,Santa Teresita,SST
+Argentina,Santiago del Estero,SDE
+Argentina,Tandil,NDL
+Argentina,Tandil,TDL
+Argentina,Trelew,REL
+Argentina,Tucuman,TUC
+Argentina,Ushuaia,USH
+Argentina,Villa Gesell,VLG
+Argentina,Villa Mercedes,VME
+Australia,Adelaide,ADL
+Australia,Brisbane,BNE
+Australia,Cairns,CNS
+Australia,Melbourne,MEL
+Australia,Perth,PER
+Australia,Sydney,SYD
+Austria,Graz,GRZ
+Austria,Klagenfurt,KLU
+Austria,Linz,LNZ
+Austria,Salzburgo,SZG
+Austria,Viena,VIE
+Bahamas,Nassau,NAS
+Bahrein,Bahrein,BAH 
+Bangladesh,Dhaka,DAC
+"Barbados, antillas",Barbados,BGI
+Bélgica,Bruselas,BRU
+Benin,Cotonou,COO
+Bhi argentina,Bahia blanca,BHI
+Bolivia,Cochabamba,CBB
+Bolivia,La paz,LPB
+Bolivia,Santa Cruz,SRZ
+Bolivia,Tarija,TJA
+Botswana,Gaborone,GBE
+Brasil,Aracaju,AJU 
+Brasil,Belem,BEL
+Brasil,Belo horizonte,BHZ
+Brasil,Cuiaba,CGB
+Brasil,Curitiba,CWB
+Brasil,Fortaleza,FOR
+Brasil,Goiania,GYN
+Brasil,Iguacu,IGU
+Brasil,Joao pessoa,JPA
+Brasil,Macapa,MCP
+Brasil,Maceio,MCZ
+Brasil,Manaos,MAO
+Brasil,Natal,NAT
+Brasil,Porto alegre,POA
+Brasil,Recife,REC
+Brasil,Rio de Janeiro,RIO
+Brasil,Salvador,SSA
+Brasil,Sao Luiz,SLZ
+Brasil,Sao Paulo,SAO
+Brasil,Tabatinga,TBT
+Brasil,Tefe,TFF
+Brasil,Florianopolis,FLN
+Bulgaria,Sofia,SOF
+Burma,Rangoon,RGN
+Burundi,Bujumbura,BJM
+Cabo verde,Ilha do sal,ILH
+Cabo verde,Ilha do sal,SID
+Camerún,Douala,DLA
+Canadá,Calgary,YYC
+Canadá,Edmonton,YEG
+Canadá,Montreal,YUL
+Canadá,Montreal,YUL
+Canadá,Ottawa,YOW
+Canadá,Toronto,YYZ
+Canadá,Vancouver,YVR
+Canadá,Victoria,YYJ
+Canadá,Windsor,YOG
+Canadá,Winnipeg,YWG
+Chad,Ndjamena,NDJ
+Checoslovaquia,Bratislava,BTS
+Checoslovaquia,Praga,PRG
+Chile,Antofagasta,ANF
+Chile,Arica,ARI
+Chile,Balmaceda,BBA
+Chile,Calama,CJC
+Chile,Concepcion,CCP
+Chile,Copiapo,CPO
+Chile,Osorno,ZOS
+Chile,Puerto montt,PMC
+Chile,Punta arenas,PUQ
+Chile,Santiago de Chile,SCL
+Chile,Temuco,ZCO
+Chile,Valdivia,ZAL
+Chile,Viña del Mar,KNA
+China,Dalian,DLC
+China,Guangzhou,CAN
+China,Pekin,PEK
+China,Shanghai,SHA
+China,Xiamen,XMN
+Chipre,Larnaca,LCA
+Chipre,Nicosia,NIC
+Colombia,Barranquilla,BAQ
+Colombia,Bogotá,BOG
+Colombia,Cali,CLO
+Colombia,Cartagena,CTG
+Colombia,Medellín,MDE
+Colombia,Santa Marta,SMR
+Corea del Sur,Seul,SEL
+Costa de Marfil,Abidjan,ABJ
+Costa Rica,San Jose,SJO
+Croacia,Dubrovnik,DBV
+Croacia,Zagreb,ZAG
+Cuba,Cayo largo,CYL
+Cuba,Habana,HAV
+Cuba,Varadero,VRA
+Brasil,Brasilia,BSB
+Dinamarca,Copenhague,CPH
+Dinamarca,Copenhague,CPH
+Djibouti,Djibouti,JIB
+Ecuador,Guayaquil,GYE
+Ecuador,Quito,UIO
+Egipto,Alejandria,ALY
+Egipto,El cairo,CAI
+El Salvador,San Salvador,SAL
+Emiratos Árabes Unidos,Abu Dhabi,AUH
+Emiratos Árabes Unidos,Dubai,DXB
+Emiratos Árabes Unidos,Sharjah,SHJ
+Eslovenia,Ljubljana,LJU
+España,Barcelona,BCN
+España,Bilbao,BIO
+España,Madrid,MAD
+España,Malaga,AGP
+España,Santiago de Compostela,SCQ
+España,Sevilla,SVQ
+España,Valencia,VLC
+España,Vigo,VGO
+Estados Unidos,Anchorage,ANC
+Estados Unidos,Atlanta,ATL
+Estados Unidos,Boston,BOS
+Estados Unidos,Buffalo,BNF
+Estados Unidos,Chicago,CHI
+Estados Unidos,Cincinnati,CVG
+Estados Unidos,Cleveland,CLE
+Estados Unidos,Columbus,CMH
+Estados Unidos,Dallas,DFW
+Estados Unidos,Dayton,DAY
+Estados Unidos,Denver,DEN
+Estados Unidos,Detroit,DTT
+Estados Unidos,Philadelphia,PHL
+Estados Unidos,Hartford,BDL
+Estados Unidos,Houston,HOU
+Estados Unidos,Indianapolis,IND
+Estados Unidos,Kansas,MKC
+Estados Unidos,Las vegas,LAS
+Estados Unidos,Los angeles,LAX
+Estados Unidos,Menphis,MEM
+Estados Unidos,Miami,MIA
+Estados Unidos,Milwaukee,MKE
+Estados Unidos,Minneapolis,MSP
+Estados Unidos,Nashville,BNA
+Estados Unidos,Norfolk,ORF
+Estados Unidos,New Orleans,MSY
+Estados Unidos,New York,NYC
+Estados Unidos,Orlando,ORL
+Estados Unidos,Phoenix,PHX
+Estados Unidos,Pittsburg,PIT
+Estados Unidos,Portland,PDX
+Estados Unidos,Richmond,RIC
+Estados Unidos,Rochester,ROC
+Estados Unidos,Salt Lake City,SLC
+Estados Unidos,San Diego,SAN
+Estados Unidos,San Francisco,SFO
+Estados Unidos,San Jose,SJC
+Estados Unidos,Seattle,SEA
+Estados Unidos,St. Louis,STL
+Estados Unidos,Tampa,TPA
+Estados Unidos,Tucson,TUS
+Estados Unidos,Washington,WAS
+Etiopía,Addis Ababa,ADD
+Etiopía,Asmara,ASM
+Etiopía,Dire dawa,DIR
+Fiji,Nadi,NAN
+Filipinas,Cebu,CEB
+Filipinas,Manila,MNL
+Finlandia,Helsinki,HEL
+Francia,Estrasburgo,SXB
+Francia,Lille,LIL
+Francia,Lyon,LYS
+Francia,Marsella,MRS
+Francia,Mulhouse,MLH
+Francia,Niza,NCE
+Francia,Paris,PAR
+Francia,Saint Denis,RUN
+Gabon,Libreville,LBV
+Gambia,Banjul,BJL
+Ghana,Accra ,ACC
+Gibraltar,Gibraltar,GIB
+Grecia,Atenas,ATH
+Grecia,Tesalonica,SKG
+Guadalupe,Pointe a pitre,PTP
+Guam,Guam,GUM
+Guatemala,Guatemala,GUA
+Guinea,Conakri,CKY
+Guyana,Georgetown,GEO
+Holanda,Amsterdam,AMS
+Honduras,Roatan,RTB
+Honduras,San Pedro Sula,SAP
+Honduras,Tegucigalpa,TGU
+Hong Kong,Hong Kong,HKG
+Hungría,Budapest,BUD
+India,Bombay ,BOM
+India,Calcuta,CCU
+India,Delhi,DEL
+India,Madras,MAA
+Indonesia,Jakarta,JKT
+Inglaterra,Londres,LON
+Iran,Teheran,THR
+Iraq,Basra,BSR
+Irlanda,Dublin,DUB
+Irlanda,Shannon,SNN
+Isla niue,Niue,IUE
+Islandia,Reykjavik,REK
+Islandia,Reykjavik,REK
+Islas Madeira,Porto santo,PXO
+Islas Marianas,Saipan,SPN
+Islas Mauricio,Mauricio,MRU
+Islas Virgenes,St. Croix,STX
+Islas Virgenes,St. Thomas,STT
+Israel,Jerusalem,JRS
+Israel,Tel Aviv,TLV
+Italia,Bologna,BLQ 
+Italia,Catania,CAT
+Italia,Genova,GOA
+Italia,Milan,MIL
+Italia,Napoles,NAP
+Italia,Palermo,PMO
+Italia,Roma,ROM
+Italia,Turin,TRN
+Italia,Venecia,VCE
+Jamaica,Kingston,KIN
+Jamaica,Montego bay,MBJ
+Japón,Fukuoka,FUK
+Japón,Nagoya,NGO
+Japón,Okinawa,OKA
+Japón,Osaka,OSA
+Japón,Tokyo,TYO
+Jordania,Amman ,AMM
+Kuwait,Kuwait,KWI
+Libano,Beirut,BEI
+Libano,Beirut,BEY
+Liberia,Monrovia,MLW
+Libia,Benghazi,BEN
+Libia,Tripoli,TIP
+Lituania,Vilna,VNO
+Luxemburgo,Luxemburgo,LUX
+Madagascar,Antananarivo,TNR
+Malasia,Kota kinabalu,BKI
+Malasia,Kuala lumpur,JUL
+Malasia,Kuala lumpur,KUL
+Malasia,Penang,PEN
+Malaui,Blantyre,BLZ
+Malaui,Lilongwe,LLW
+Mali,Bamako ,BKO
+Malta,Malta,MLA
+Marruecos,Casablanca,CAS
+Marruecos,Tanger,TNG
+Martinica,Fort de france,FDF
+Estados Unidos,Baltimore,BWI
+Mauritania,Nouakchott,NKC
+México,Acapulco,ACA
+México,Aguascalientes,AGU
+México,Álamos,XAL
+México,Apatzingán,AZG
+México,Atizapán,JJC
+México,Cabo San Lucas,CSL
+México,Campeche,CPE
+México,Cananea,CNA
+México,Cancún,CUN
+México,Celaya,CYW
+México,Chetumal,CTM
+México,Chichén Itzá,CZA
+México,Chihuahua,CUU
+México,Ciudad Acuña,ACN
+México,Ciudad Constitución,CUA
+México,Ciudad de México,MEX
+México,Ciudad del Carmen,CME
+México,Ciudad Juárez,CJS
+México,Ciudad Mante,MMC
+México,Ciudad Obregón,CEN
+México,Ciudad Pemex,CPX
+México,Ciudad Victoria,CVM
+México,Colima,CLQ
+México,Comitán,CJT
+México,Cozumel,CZM
+México,Cuernavaca,CVJ
+México,Culiacán,CUL
+México,Durango,DGO
+México,Ensenada,ESE
+México,Ensenada,ESE
+México,Frontera,LOV
+México,Guadalajara,GDL
+México,Guaymas,GYM
+México,Guerrero Negro,GUB
+México,Hermosillo,HMO
+México,Huatulco,HUX
+México,Isla Cedros,CDI
+México,Isla Mujeres,ISJ
+México,Ixtapa/Zihuatanejo,ZIH
+México,Ixtepec,IZT
+México,La Paz,LAP
+México,Lagos de Moreno,LOM
+México,Lázaro Cárdenas,LZC
+México,León,BJX
+México,Loreto,LTO
+México,Los Cabos,SJD
+México,Los Mochis,LMM
+México,Manzanillo,ZLO
+México,Manzanillo,ZLO
+México,Matamoros,MAM
+México,Mazatlán,MZT
+México,Mérida,MID
+México,Mexicali,MXL
+México,Minatitlán,MTT
+México,Monterrey,MTY
+México,Morelia,MLM
+México,Mulegé,MUG
+México,Navojoa,NAV
+México,Nogales,NOG
+México,Nuevo Casas Grandes,NCG
+México,Nuevo Laredo,NLD
+México,Oaxaca,OAX
+México,Pachuca,PCA
+México,Palenque,PQM
+México,Piedras Negras,PDS
+México,Pijijiapan,PJP
+México,Poza Rica,PAZ
+México,Puerto Escondido,PXM
+México,Puerto Peñasco,PPE
+México,Puerto Vallarta,PVR
+México,Querétaro,QRO
+México,Reynosa,REX
+México,Salina Cruz,SCX
+México,Saltillo,SLW
+México,San Cristobal de las Casas,SZT
+México,San Felipe,SFH
+México,San Luis Potosí,SLP
+México,San Luis Río Colorado,UAC
+México,Santa Rosalía,PVP
+México,Tampico,TAM
+México,Tamuín,TCN
+México,Tamuín,TSL
+México,Tapachula,TAP
+México,Teacapán,TCP
+México,Tehuacán,TCN
+México,Tepic,TNY
+México,Tepic,TPQ
+México,Tijuana,TIJ
+México,Tizimín,TZM
+México,Toluca,TLC
+México,Torreón,TRC
+México,Tulum,TUY
+México,Tuxpan,TUX
+México,Tuxtla Gutiérrez,TGM
+México,Tuxtla Gutiérrez,TGZ
+México,Uruapan,UPN
+México,Veracruz,VER
+México,Villahermosa,VSA
+México,Xalapa,JAL
+México,Zacatecas,ZCL
+México,Zamora,ZMM
+México,Zapopan,ZAP
+México,Zumpango,SLM
+Mozambique,Maputo,MPM
+Namibia,Windhoek,WDH
+Nepal,Katmandu,KTM
+Nicaragua,Managua,MGA
+Nigeria,Kano,KAN
+Nigeria,Lagos,LOS
+Nigeria,Niamei,NIM
+Noruega,Bergen,BGO
+Noruega,Kristiansand,KRS
+Noruega,Oslo,OSL
+Noruega,Oslo,OSL
+Noruega,Stavanger,SVG
+Nueva Caledonia,Noumea,NOU
+Nueva Zelanda,Auckland,AKL
+Nueva Zelanda,Christchurch,CHC
+Nueva Zelanda,Wellington,WLG
+Oman,Mascate,MCT
+Pakistán,Islamabad,ISB
+Pakistán,Karachi,KHI
+Panama,Panama,PTY
+Paraguay,Asuncion,ASU
+Pero,Iquitos,IQT
+Perú,Arequipa,AQP
+Perú,Ayacucho,AYP
+Perú,Chiclayo,CIX
+Perú,Cuzco,CUZ
+Perú,Lima,LIM
+Perú,Piura,PIU
+Perú,Pucallpa,PCL
+Perú,Puerto maldonado,PEM
+Perú,Tacna,TCQ
+Perú,Trujillo,TRU
+Polonia,Varsovia,WAW
+Portugal,Faro,FAO
+Portugal,Funchal,FNC
+Portugal,Horta,HOR
+Portugal,Lisboa,LIS
+Portugal,Oporto,OPO
+Portugal,Ponta delgada,PDL
+Puerto Rico,San Juan,SJU
+Qatar,Doha,DOH
+Rep. centroafricana,Bangui,BGF
+Rep. pop. del congo,Brazzaville,BZV
+República Dominicana,Punta cana,PUJ
+República Dominicana,Santo Domingo,SDQ
+Rumania,Bucarest,BUH
+Rumania,Timisoala,TSR
+Rusia,Moscu,MOW
+Rwanda,Kigali,KGL
+Samoa,Apia,APW
+Samoa,Pago pago,PPG
+Senegal,Dakar,DKR
+Sierra Leona,Freetown,FNA
+Singapur,Singapur,SIN
+Siria,Alepro,ALP
+Siria,Damasco,DAM
+Sri Lanka,Colombo,CMB
+Sudáfrica,Cape town,CPT
+Sudáfrica,Johannesburgo,JNB
+Sudán,Khartum,KRT
+Suecia,Estocolmo,STO
+Suecia,Gotemburgo,GOT
+Suecia,Malmo,MMA
+Suiza,Ginebra,GVA
+Suiza,Zurich,ZRH
+Surinam,Paramaribo,PBM
+Tahiti,Papeete,PPT
+Tailandia,Phuket,HKT
+Taiwan,Kaohsiung,KHH
+Taiwan,Taipei,TPE
+Tanzania,Dar es salaam,DAR
+Togo,Lome,LFW
+Trinidad,Port of spain,POS
+Ttnr madagascar,Bangkok,BKK
+Turquía,Ankara ,ANK
+Turquía,Esmirna,IZM
+Turquía,Estambul,IST
+Uganda,Entebe,EBB
+Uruguay,Colonia,CYR
+Uruguay,Montevideo,MVD
+Uruguay,Punta del este,PDP
+Venezuela,Barcelona,BLA
+Venezuela,Caracas,CCS
+Venezuela,Maracaibo,MAR
+Venezuela,Porlamar,PMV
+Vietnam,Hanoi,HAN
+Vietnam,Ho chi minh,SGN
+Yemen,Sanaa,SAH
+Yugoslavia,Belgrado,BEG
+Zaire,Bukavu,BKY
+Zaire,Kinshasa,FIH
+Zaire,Lubumbashi,FBM
+Zambia,Lusaka,LUN
+Zimbabue,Bulawayo,BUQ
+Zimbabue,Harare,HRE
+Zimbabue,Victoria Falls,VFA

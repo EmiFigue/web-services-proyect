@@ -57,6 +57,6 @@ Este es un proyecto escolar para la materia "Modelado y Programación".
 
 ## Autores
 
-- [@EmiFigue](https://github.com/EmiFigue)
-- [@LaraEnGithub](https://github.com/LaraEnGithub)
-- [@AlejandroHerreraAvalosFC](https://github.com/AlejandroHerreraAvalosFC)
+- [@EmiFigue](https://github.com/EmiFigue) - Proyect Manager/Backend
+- [@LaraEnGithub](https://github.com/LaraEnGithub) - Frontend/UI Designer
+- [@AlejandroHerreraAvalosFC](https://github.com/AlejandroHerreraAvalosFC) - Backend/Testing
