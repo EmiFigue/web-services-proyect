@@ -75,8 +75,12 @@ function App() {
           if (Array.isArray(res)) {
             const [departureWeather, destinationWeather] = res;
             setWeatherDeparture(departureWeather);
+            calculateDayTime(departureWeather, setIsDayTimeDeparture);
+
             setWeatherDestination(destinationWeather);
+            calculateDayTime(destinationWeather, setIsDayTimeDestination);
           } else {
+            calculateDayTime(res, setIsDayTimeDeparture);
             setWeatherDeparture(res);
             setWeatherDestination(null);
           } 
