@@ -8,9 +8,9 @@ AICM Clima es una aplicación web con una interfaz gráfica intuitiva que permit
 
 - Modo oscuro/claro
 - Selección de unidad de medida (métrica/imperial)
-
-
-
+- Modo letra grande
+- Colores aptos para daltonicos
+- Compatible con lectores de pantalla para gente con impedimientos visuales
 ## 🛠 Lenguaje y Framework
 - Javascript
 - React
