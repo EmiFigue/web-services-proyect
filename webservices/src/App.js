@@ -59,7 +59,7 @@ function App() {
     const result = searchTicket(search, tickets, iata);
     const valida = search
     if(!validarString(valida)) {
-      setErrorMessage('Input contiene caracteres inválidos, intente denuevo únicamente con letras y números');
+      setErrorMessage('Input contiene caracteres inválidos, intente de nuevo únicamente con letras y números');
       setWeatherDeparture(null);
       setWeatherDestination(null);
       return;
